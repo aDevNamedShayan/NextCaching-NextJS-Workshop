@@ -1,5 +1,7 @@
 export default async function MessagesLayout({ children }) {
-  const response = await fetch('http://localhost:8080/messages');
+  const response = await fetch('http://localhost:8080/messages', {
+    next: { tags: ['msg'] }
+  });
   const messages = await response.json();
   const totalMessages = messages.length;
 
