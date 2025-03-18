@@ -11,6 +11,7 @@ export default function NewMessagePage() {
     addMessage(message); 
     // revalidatePath('/messages', 'page')
     // revalidateTag('msg')
+    revalidateTag('internalDbMsg')
     redirect('/messages');
   }
 
