@@ -2,7 +2,7 @@ import { unstable_noStore } from 'next/cache';
 import Messages from '@/components/messages';
 
 // export const revalidate = 5 //seconds
-// export const dynamic = 'force-dynamic' //cachimg options. force-dynamic = no-store, force-static = force-cache //is file wide
+export const dynamic = 'force-dynamic' //cachimg options. force-dynamic = no-store, force-static = force-cache //is file wide
 
 export default async function MessagesPage() {
   // unstable_noStore() //same are 'force-dynamic' and 'no-store' //is component / function wide
