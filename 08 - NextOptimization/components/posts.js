@@ -7,11 +7,25 @@ import { formatDate } from '@/lib/format';
 import LikeButton from './like-icon';
 import { togglePostLikeStatus } from '@/actions/posts';
 
+function imageLoader(config) {
+  const [urlStart, urlEnd] = config.src.split('upload/')
+  const transformations = `w_200,q_${config.quality ? config.quality : '100'}`
+  return `${urlStart}upload/${transformations}/${urlEnd}`
+}
+
 function Post({ post, action }) {
   return (
     <article className="post">
       <div className="post-image">
-        <Image src={post.image} alt={post.title} fill />
+        <Image 
+          src={post.image} 
+          alt={post.title} 
+          loader={imageLoader} 
+          quality={50} 
+          // fill //becuase we now fetch the image with a defined 200 width in the imageLoader, we can avoid using fill and use a static width & height instead
+          width={200}
+          height={120}
+        />
       </div>
       <div className="post-content">
         <header>
