@@ -1,1 +1,0 @@
-# NextCaching-NextJS-Workshop
