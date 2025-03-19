@@ -4,11 +4,16 @@ import Link from 'next/link';
 import logo from '@/assets/logo.png';
 
 export default function Header() {
-  console.log(logo)
   return (
     <header id="main-header">
       <Link href="/">
-        <Image src={logo} alt="Mobile phone with posts feed on it" />
+        <Image 
+          src={logo} 
+          alt="Mobile phone with posts feed on it" 
+          // width={500000}
+          // height={500000}
+          // sizes='10vw'
+        />
       </Link>
       <nav>
         <ul>
