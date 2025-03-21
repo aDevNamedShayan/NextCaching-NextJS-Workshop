@@ -5,7 +5,7 @@ import { useFormState } from 'react-dom';
 
 import { signUp } from '@/actions/auth-actions';
 
-export default function AuthForm() {
+export default function AuthForm({ mode }) {
   const [formState, formAction, isPending] = useFormState(signUp, {})
   return (
     <form id="auth-form" action={formAction}>
@@ -24,13 +24,14 @@ export default function AuthForm() {
       </p>
       <p>
         <button type="submit">
-          {isPending ? 'Creating...' : 'Create Account'}
+          {mode === 'signup' && (isPending ? 'Creating...' : 'Create Account')}
+          {mode === 'login' && (isPending ? 'Logging in...' : 'Login')}
         </button>
       </p>
       <p>
-        <Link href="/">Login with existing account.</Link>
+        {mode === 'signup' && <Link href="/?mode=login">Login with existing account.</Link>}
+        {mode === 'login' && <Link href="/?mode=signup">Create an account.</Link>}
       </p>
-
     </form>
   );
 }
