@@ -6,7 +6,7 @@ import { hashUserPassword, verifyPassword } from "@/lib/hash"
 import { createUser, getUserByEmail } from "@/lib/user"
 import { createAuthSession } from "@/lib/auth"
 
-export async function signUp(prevState, formData) {
+export async function signUp(formData) {
   const email = formData.get('email')
   const password = formData.get('password')
 
@@ -30,7 +30,7 @@ export async function signUp(prevState, formData) {
   }
 }
 
-export async function login(prevState, formData) {
+export async function login(formData) {
   const email = formData.get('email')
   const password = formData.get('password')
 
@@ -42,4 +42,9 @@ export async function login(prevState, formData) {
 
   await createAuthSession(existingUser.id)
   redirect('/training')
+}
+
+export async function auth(mode, prevState, formData) {
+  if(mode === 'signup') return signUp(formData)
+  else if(mode === 'login') return login(formData) 
 }

@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { useFormState } from 'react-dom';
 
-import { signUp } from '@/actions/auth-actions';
+import { auth } from '@/actions/auth-actions';
 
 export default function AuthForm({ mode }) {
-  const [formState, formAction, isPending] = useFormState(signUp, {})
+  const [formState, formAction, isPending] = useFormState(auth.bind(null, mode), {})
   return (
     <form id="auth-form" action={formAction}>
       <div>
