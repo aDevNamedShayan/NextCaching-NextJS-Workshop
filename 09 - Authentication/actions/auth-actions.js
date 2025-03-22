@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 
 import { hashUserPassword, verifyPassword } from "@/lib/hash"
 import { createUser, getUserByEmail } from "@/lib/user"
-import { createAuthSession } from "@/lib/auth"
+import { createAuthSession, destroyAuthSession } from "@/lib/auth"
 
 export async function signUp(formData) {
   const email = formData.get('email')
@@ -47,4 +47,9 @@ export async function login(formData) {
 export async function auth(mode, prevState, formData) {
   if(mode === 'signup') return signUp(formData)
   else if(mode === 'login') return login(formData) 
+}
+
+export async function logout() {
+  await destroyAuthSession()
+  redirect('/')
 }
